@@ -1,18 +1,28 @@
 # ofxApplePlist
 
-Openframeworks addon for reading Apple Property list files (plists).
+openFrameworks addon for reading Apple Property list files (plists).
 
-# TODO:
+## Dependencies
+
+- openFrameworks 0.9.8
+- Uses Poco (::Any)
+- Runs on macOS (should work / untested on Linux & Windows since plists are not used outside macOS).
+
+## TODO
 
 Already functional but:
 
 - needs proper example
 - needs more testing
 
-# More info on plists:
+## More info on plists
 
 https://en.wikipedia.org/wiki/Property_list
 
-# More info on me:
+## About me
 
 http://datishans.nl
+
+## License
+
+MIT
