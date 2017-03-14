@@ -1,9 +1,9 @@
 //
-//  ofxPlist.cpp
-//  mySketch
+//  ofxApplePlist.cpp
 //
-//  Created by Hans Bijkerk on 09-03-17.
+//  Maintained and open sourced by
 //
+//  Hans Bijkerk, datishans.nl, twitter.com/datishans
 //
 #include "ofxApplePlist.h"
 
@@ -91,7 +91,7 @@ Poco::Any ofxApplePlist::toAny() {
         return stoi(plist.getValue());
     }
     
-    ofLog(OF_LOG_WARNING, "plist type %s not supportd!", plist.getValue().c_str());
+    ofLog(OF_LOG_WARNING, "plist type %s not supported!", plist.getValue().c_str());
 
     return NULL;
 }

@@ -1,9 +1,9 @@
 //
-//  ofxPlist.h
-//  mySketch
+//  ofxApplePlist.cpp
 //
-//  Created by Hans Bijkerk on 09-03-17.
+//  Maintained and open sourced by
 //
+//  Hans Bijkerk, datishans.nl, twitter.com/datishans
 //
 #pragma once
 
