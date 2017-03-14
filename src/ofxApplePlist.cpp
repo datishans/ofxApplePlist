@@ -88,7 +88,7 @@ Poco::Any ofxApplePlist::toAny() {
         return plist.getValue();
     }
     if (plist.getName() == "integer") {
-        return stoi(plist.getValue());
+        return stol(plist.getValue());
     }
     
     ofLog(OF_LOG_WARNING, "plist type %s not supported!", plist.getValue().c_str());
