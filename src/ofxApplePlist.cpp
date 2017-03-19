@@ -45,6 +45,7 @@ Poco::Any ofxApplePlist::toAny() {
             plist.setToSibling();
             Poco::Any value = toAny();
             dict[currentKey] = value;
+          
             
             // to next key
             plist.setToSibling();
@@ -81,7 +82,7 @@ Poco::Any ofxApplePlist::toAny() {
     if (plist.getName() == "true") {
         return true;
     }
-    if (plist.getName() == "true") {
+    if (plist.getName() == "false") {
         return false;
     }
     if (plist.getName() == "string") {
@@ -93,5 +94,5 @@ Poco::Any ofxApplePlist::toAny() {
     
     ofLog(OF_LOG_WARNING, "plist type %s not supported!", plist.getValue().c_str());
 
-    return NULL;
+    return false;
 }
