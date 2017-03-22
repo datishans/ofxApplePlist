@@ -7,27 +7,24 @@
 //
 #include "ofxApplePlist.h"
 
-Poco::Any ofxApplePlist::load(ofFile file) {
+Any ofxApplePlist::load(ofFile file) {
     ofBuffer buffer = file.readToBuffer();
     plist.loadFromBuffer(buffer.getText());
     plist.setTo("plist");
     plist.setToChild(0);
-    
     return toAny();
 }
 
-Poco::Any ofxApplePlist::load(string plistdata) {
+Any ofxApplePlist::load(string plistdata) {
     plist.loadFromBuffer(plistdata);
     plist.setTo("plist");
     plist.setToChild(0);
-    
     return toAny();
 }
 
-Poco::Any ofxApplePlist::toAny() {
-    
+Any ofxApplePlist::toAny() {
     if (plist.getName() == "dict") {
-        std::map<string, Poco::Any> dict;
+        std::map<string, Any> dict;
         string currentKey = "";
         plist.setToChild(0);
         
@@ -41,38 +38,37 @@ Poco::Any ofxApplePlist::toAny() {
                 break;
             }
             
-            // to corresponding value
+            // To corresponding value
             plist.setToSibling();
-            Poco::Any value = toAny();
+            Any value = toAny();
             dict[currentKey] = value;
           
-            
-            // to next key
+            // To next key
             plist.setToSibling();
         }
         
-        // step out of dict
+        // Step out of dict
         plist.setToParent();
         
         return dict;
     }
     
     if (plist.getName() == "array") {
-        vector<Poco::Any> arr;
+        vector<Any> arr;
         int numChildren = plist.getNumChildren();
         
         if (numChildren > 0) {
             plist.setToChild(0);
             
             for (int n = 0; n < numChildren; n++) {
-                Poco::Any value = toAny();
+                Any value = toAny();
                 arr.push_back(value);
             
-                // to next value
+                // To next value
                 plist.setToSibling();
             }
             
-            // step out of array
+            // Step out of array
             plist.setToParent();
         }
 
@@ -82,12 +78,15 @@ Poco::Any ofxApplePlist::toAny() {
     if (plist.getName() == "true") {
         return true;
     }
+    
     if (plist.getName() == "false") {
         return false;
     }
+    
     if (plist.getName() == "string") {
         return plist.getValue();
     }
+    
     if (plist.getName() == "integer") {
         return stol(plist.getValue());
     }

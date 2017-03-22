@@ -10,11 +10,13 @@
 #include "ofMain.h"
 #include "Poco/Any.h"
 
+using Poco::Any;
+
 class ofxApplePlist {
     ofXml plist;
-    Poco::Any toAny();
+    Any toAny();
     
 public:
-    Poco::Any load(ofFile file);
-    Poco::Any load(string plistdata);
+    Any load(ofFile file);
+    Any load(string plistdata);
 };
